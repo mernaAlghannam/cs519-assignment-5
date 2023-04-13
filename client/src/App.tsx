@@ -6,10 +6,11 @@ function App() {
 
   const fetchClassList = async () => {
 
-    const res = await fetch("https://my-container-apps.bluerock-b7a8c33e.westus2.azurecontainerapps.io/api/HttpExample?name=https://learn.microsoft.com/azure/cognitive-services/computer-vision/media/quickstarts/presentation.png", {
-      method: "POST",
-    }
-    );
+    // const res = await fetch("https://my-container-apps.bluerock-b7a8c33e.westus2.azurecontainerapps.io/api/HttpExample?name=https://learn.microsoft.com/azure/cognitive-services/computer-vision/media/quickstarts/presentation.png", {
+    //   method: "POST",
+    // }
+    // );
+    const res = await fetch("/api/hello");
 
     const shippingData = await res.json();
     console.log(shippingData)
