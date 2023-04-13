@@ -1,0 +1,19 @@
+{
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "outqueue",
+      "connection": "queueconnectionstring"
+    },
+    {
+      "name": "productImage",
+      "databaseName": "shipping-data",
+      "collectionName": "shippers",
+      "connectionStringSetting": "shipping-data-dbs-acc_DOCUMENTDB",
+      "direction": "out",
+      "type": "cosmosDB"
+    }
+  ]
+}
