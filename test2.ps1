@@ -1,0 +1,2 @@
+$storageConnectionString = $(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name mernastoragename --query connectionString --output tsv)
+az functionapp config appsettings set --name mernaappname --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
