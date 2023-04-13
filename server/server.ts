@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static("../client/build"));
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+  // console.log(`Server listening on ${PORT}`);
 });
 
 app.get("/api/hello", (req, res) => {
