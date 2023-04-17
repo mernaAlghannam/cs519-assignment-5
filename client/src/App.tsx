@@ -45,7 +45,6 @@ function App() {
 
       const shippingData = await res.json();
       console.log(shippingData)
-      // await fetchShipperData()
 
       
       // const res = await fetch("/api/productImage/https://outqueue.blob.core.windows.net/image/"+file.name);
@@ -57,16 +56,6 @@ function App() {
   
     }
 
-    const fetchShipperData = async () => {
-      if (!file){
-        return
-      }
-
-      const res = await fetch("/api/productImage/https://outqueue.blob.core.windows.net/image/commImg");
-
-      const shippingData = await res.json();
-      console.log(shippingData)
-    }
 
   return (
     <div className="App">
