@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import fetch from "node-fetch"
 
 const PORT = process.env.PORT || 5000;
 
