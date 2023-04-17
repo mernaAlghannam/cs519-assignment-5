@@ -3,8 +3,6 @@ import { useState } from 'react';
 import {BlobServiceClient} from "@azure/storage-blob"
 
 function App() {
-  let [currShipperID, setCurrShipperID] = useState<string>("");
-  const [selectedImage, setSelectedImage] = useState(null);
   const [file, setFile] = useState<File >()
 
 
