@@ -42,7 +42,7 @@ function App() {
       alert("successfully added to queue")
 
       // const res = await fetch("/api/productImage/https://outqueue.blob.core.windows.net/image/commImg");
-      const res = await fetch("https://my-container-apps.bluerock-b7a8c33e.westus2.azurecontainerapps.io/api/HttpExample?name=https://outqueue.blob.core.windows.net/image/commImg.png"
+      const res = await fetch("https://my-container-apps.bluerock-b7a8c33e.westus2.azurecontainerapps.io/api/HttpExample?name=https://outqueue.blob.core.windows.net/image/"+file.name
       );
 
       const shippingData = await res.json();
