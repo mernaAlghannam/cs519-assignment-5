@@ -23,10 +23,10 @@ jobs:
 
       - name: npm install, build
         run: |
-        npm run build-prod
-        rm -r public
-        rm -r node_modules
-        rm -r src
+          npm run build-prod
+          rm -r public
+          rm -r node_modules
+          rm -r src
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
