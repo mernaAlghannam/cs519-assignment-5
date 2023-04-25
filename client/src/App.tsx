@@ -11,10 +11,21 @@ function App() {
     //   setCurrShipperID(event.target.value);
     // };
 
-    const handleChange2 = ( event:any) => {
+    const handleChange2 = async ( event:any) => {
       setFile(event.target.files[0])
       console.log(event.target.files[0].type)
       console.log(event.target.files[0].name)
+
+      const connectionstring = "BlobEndpoint=https://outqueue.blob.core.windows.net/;QueueEndpoint=https://outqueue.queue.core.windows.net/;FileEndpoint=https://outqueue.file.core.windows.net/;TableEndpoint=https://outqueue.table.core.windows.net/;SharedAccessSignature=sv=2021-12-02&ss=b&srt=co&sp=rwdlaciytfx&se=2023-07-27T08:37:57Z&st=2023-04-14T00:37:57Z&spr=https&sig=aLGp1BRUodkqvHis%2BaFZN2syq3UTESoifbzSPApvUF0%3D"
+      const blobServiceClient = BlobServiceClient.fromConnectionString(connectionstring);
+      const containerName = "image"
+      const containerClient = blobServiceClient.getContainerClient(containerName)
+      console.log("hello")
+      console.log(event.target.files[0].name)
+      const blob = new Blob([event.target.files[0]], {type: event.target.files[0].type});
+      const blockBlobClient = containerClient.getBlockBlobClient(event.target.files[0].name)
+      await blockBlobClient.uploadData(blob)
+      alert("successfully added to queue")
     };
   
     // const handleSubmit = (event: any) => {
@@ -28,16 +39,7 @@ function App() {
         return
       }
 
-      const connectionstring = "BlobEndpoint=https://outqueue.blob.core.windows.net/;QueueEndpoint=https://outqueue.queue.core.windows.net/;FileEndpoint=https://outqueue.file.core.windows.net/;TableEndpoint=https://outqueue.table.core.windows.net/;SharedAccessSignature=sv=2021-12-02&ss=b&srt=co&sp=rwdlaciytfx&se=2023-07-27T08:37:57Z&st=2023-04-14T00:37:57Z&spr=https&sig=aLGp1BRUodkqvHis%2BaFZN2syq3UTESoifbzSPApvUF0%3D"
-      const blobServiceClient = BlobServiceClient.fromConnectionString(connectionstring);
-      const containerName = "image"
-      const containerClient = blobServiceClient.getContainerClient(containerName)
-      console.log("hello")
       console.log(file.name)
-      const blob = new Blob([file], {type: file.type});
-      const blockBlobClient = containerClient.getBlockBlobClient(file.name)
-      await blockBlobClient.uploadData(blob)
-      // alert("successfully added to queue")
       const res = await fetch("https://my-container-apps.bluerock-b7a8c33e.westus2.azurecontainerapps.io/api/HttpExample?name=https://outqueue.blob.core.windows.net/image/"+file.name,
       {method: "GET"}
       );
@@ -47,16 +49,7 @@ function App() {
       // {method: "GET"}
       // );
 
-      const shippingData = await res.json();
-      console.log(shippingData)
-
-      
-      // const res = await fetch("/api/productImage/https://outqueue.blob.core.windows.net/image/"+file.name);
-
-      // const shippingData = await res.json();
-      // console.log(shippingData)
-
-      alert("successfully added to queue")
+      alert("successfully added to queue"+res.json())
   
     }
 
