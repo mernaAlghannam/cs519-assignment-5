@@ -22,7 +22,11 @@ jobs:
           node-version: '16.x'
 
       - name: npm install, build
-        run: npm run build-prod
+        run: |
+          npm run build-prod
+          rm -r client\public
+          rm -r client\node_modules
+          rm -r client\src
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
